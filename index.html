@@ -1,0 +1,1915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Care Link - Health Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="script.js"></script>
+    <style>
+        .sidebar-active { background-color: #3b82f6; color: white; }
+        .page-content { display: none; }
+        .page-content.active { display: block; }
+    </style>
+</head>
+<body class="bg-gray-50 text-slate-800 font-sans">
+
+    <div class="flex min-h-screen">
+        <aside class="w-64 bg-white border-r border-gray-200 flex flex-col fixed h-full z-20">
+            <div class="p-6">
+                <h1 class="text-2xl font-black text-blue-600 tracking-tight">CARE LINK</h1>
+            </div>
+            
+            <nav class="flex-1 px-4 space-y-1">
+                <p class="text-xs font-bold text-gray-400 uppercase px-3 mb-2">Main Menu</p>
+                <button onclick="showPage('dashboard')" class="nav-link sidebar-active w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-semibold transition-colors">
+                    <i class="fa-solid fa-house"></i> Dashboard
+                </button>
+                <button onclick="showPage('find-doctors')" class="nav-link w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-semibold text-gray-600 hover:bg-gray-100">
+                    <i class="fa-solid fa-user-doctor"></i> Find Doctors
+                </button>
+                <button onclick="showPage('hospitals')" class="nav-link w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-semibold text-gray-600 hover:bg-gray-100">
+                    <i class="fa-solid fa-hospital"></i> Hospitals
+                </button>
+                <button onclick="showPage('blood-banks')" class="nav-link w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-semibold text-gray-600 hover:bg-gray-100">
+                    <i class="fa-solid fa-droplet"></i> Blood Banks
+                </button>
+                <button onclick="showPage('ai-analyzer')" class="nav-link w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-semibold text-gray-600 hover:bg-gray-100">
+                    <i class="fa-solid fa-microscope"></i> AI Report Analyzer
+                </button>
+
+                <div class="pt-8">
+                    <p class="text-xs font-bold text-gray-400 uppercase px-3 mb-2">Personal</p>
+                    <button onclick="showPage('appointments')" class="nav-link w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-semibold text-gray-600 hover:bg-gray-100">
+                        <i class="fa-solid fa-calendar-check"></i> Appointments
+                    </button>
+                    <button onclick="showPage('settings')" class="nav-link w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-semibold text-gray-600 hover:bg-gray-100">
+                        <i class="fa-solid fa-gear"></i> Settings
+                    </button>
+                </div>
+            </nav>
+
+            
+        </aside>
+
+        <main class="ml-64 flex-1">
+            <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 sticky top-0 z-10">
+                <div class="w-96 relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-gray-400"></i>
+                    <input type="text" placeholder="Search doctors, hospitals, reports..." class="w-full bg-gray-100 border-none rounded-lg py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="flex items-center gap-5">
+                    <button onclick="showPage('notifications')" class="relative text-gray-400 hover:text-blue-500">
+                        <i class="fa-regular fa-bell text-xl"></i>
+                        <span class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+                    </button>
+                    <button onclick="showPage('profile')" 
+                        class="w-full p-4 border-t border-gray-100 flex items-center gap-3 hover:bg-gray-50">
+                       <img src="https://i.pravatar.cc/100?u=alex" 
+                        class="w-10 h-10 rounded-full border" 
+                        alt="Profile">
+                       <div class="text-left">
+                        <p class="text-sm font-bold">Jitin Krishna</p>
+                        <p class="text-xs text-gray-500">Patient</p>
+                       </div>
+                    </button>
+            </header>
+
+            <div class="p-8">
+                <section id="dashboard" class="page-content active">
+                    <h1 class="text-3xl font-bold text-gray-800">Welcome back, Jitin Krishna</h1>
+                    <p class="text-gray-500 mb-8">Here is your health overview and nearby medical services.</p>
+                    <div class="flex justify-between items-center mb-3">
+                        <h2 class="text-lg font-semibold text-gray-700">Nearby Donors</h2>
+                        <a class="text-blue-500 text-sm cursor-pointer">View all</a>
+                    </div>
+                    <div class="grid grid-cols-3 gap-6 mb-10">
+
+<!-- Donor Card -->
+<div class="bg-white p-4 rounded-xl shadow">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<img src="https://i.pravatar.cc/40?img=5" class="rounded-full">
+<div>
+<p class="font-semibold">Rahul singh</p>
+<p class="text-sm text-gray-400">Last donated: 4 mos ago</p>
+</div>
+</div>
+<span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full">O+</span>
+</div>
+
+<div class="flex justify-between items-center mt-4">
+<p class="text-sm text-gray-500">1.2 km away</p>
+<button class="text-blue-500 text-sm font-medium">Request</button>
+</div>
+</div>
+
+<div class="bg-white p-4 rounded-xl shadow">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<img src="https://i.pravatar.cc/40?img=5" class="rounded-full">
+<div>
+<p class="font-semibold">Jitin Iyer</p>
+<p class="text-sm text-gray-400">Last donated: 4 mos ago</p>
+</div>
+</div>
+<span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full">O+</span>
+</div>
+
+<div class="flex justify-between items-center mt-4">
+<p class="text-sm text-gray-500">2.1 km away</p>
+<button class="text-blue-500 text-sm font-medium">Request</button>
+</div>
+</div>
+
+<!-- Donor 2 -->
+<div class="bg-white p-4 rounded-xl shadow">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<img src="https://i.pravatar.cc/40?img=8" class="rounded-full">
+<div>
+<p class="font-semibold">krishana</p>
+<p class="text-sm text-gray-400">Last donated: 2 mos ago</p>
+</div>
+</div>
+<span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full">A-</span>
+</div>
+
+<div class="flex justify-between mt-4">
+<p class="text-sm text-gray-500">2.5 km away</p>
+<button class="text-blue-500 text-sm font-medium">Request</button>
+</div>
+</div>
+
+<!-- Donor 3 -->
+<div class="bg-white p-4 rounded-xl shadow">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<img src="https://i.pravatar.cc/40?img=12" class="rounded-full">
+<div>
+<p class="font-semibold">pooja</p>
+<p class="text-sm text-gray-400">First time donor</p>
+</div>
+</div>
+<span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full">B+</span>
+</div>
+
+<div class="flex justify-between mt-4">
+<p class="text-sm text-gray-500">3.8 km away</p>
+<button class="text-blue-500 text-sm font-medium">Request</button>
+</div>
+</div>
+
+</div>
+
+
+<!-- Blood Banks -->
+<div class="flex justify-between items-center mb-3">
+<h2 class="text-lg font-semibold text-gray-700">Blood Banks</h2>
+<a class="text-blue-500 text-sm cursor-pointer">View all</a>
+</div>
+
+<div class="grid grid-cols-2 gap-6 mb-10">
+
+<div class="bg-white p-6 rounded-xl shadow">
+<p class="font-semibold text-gray-700">Calicut MVR Blood Bank</p>
+<p class="text-sm text-gray-400 mb-4">Open until 8:00 PM</p>
+
+<div class="flex justify-between">
+<p class="text-sm text-gray-500">0.8 km away</p>
+<p class="text-green-500 font-semibold text-sm">High Stock</p>
+</div>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<p class="font-semibold text-gray-700">Blood Bank</p>
+<p class="text-sm text-gray-400 mb-4">24/7 Emergency</p>
+
+<div class="flex justify-between">
+<p class="text-sm text-gray-500">4.2 km away</p>
+<p class="text-red-500 font-semibold text-sm">Low Stock</p>
+</div>
+</div>
+
+</div>
+
+
+<!-- Hospitals -->
+<div class="flex justify-between items-center mb-3">
+<h2 class="text-lg font-semibold text-gray-700">Nearby Hospitals</h2>
+<a class="text-blue-500 text-sm cursor-pointer">View all</a>
+</div>
+
+<div class="grid grid-cols-3 gap-6 mb-16">
+
+<div class="bg-white rounded-xl shadow overflow-hidden">
+<img src="kmct hospital.jpg" class="h-40 w-full object-cover">
+<div class="p-4">
+<p class="font-semibold">KMCT Medical College Hospital</p>
+<p class="text-sm text-gray-400 mb-3">Multispecialty • Trauma Center</p>
+
+<div class="flex justify-between">
+<p class="text-sm text-gray-500">1.5 km away</p>
+<button class="text-blue-500 text-sm">Book Appt</button>
+</div>
+</div>
+</div>
+
+<div class="bg-white rounded-xl shadow overflow-hidden">
+<img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118" class="h-40 w-full object-cover">
+<div class="p-4">
+<p class="font-semibold">TRUHEAL MULTI SPECIALITY HOSPITAL</p>
+<p class="text-sm text-gray-400 mb-3">Cardiology • Orthopedics</p>
+
+<div class="flex justify-between">
+<p class="text-sm text-gray-500">3.1 km away</p>
+<button class="text-blue-500 text-sm">Book Appt</button>
+</div>
+</div>
+</div>
+
+<div class="bg-white rounded-xl shadow overflow-hidden">
+<img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907" class="h-40 w-full object-cover">
+<div class="p-4">
+<p class="font-semibold">AMH Hospital & Rehabilitation </p>
+<p class="text-sm text-gray-400 mb-3">Pediatrics • General Med</p>
+
+<div class="flex justify-between">
+<p class="text-sm text-gray-500">5.0 km away</p>
+<button class="text-blue-500 text-sm">Book Appt</button>
+</div>
+</div>
+</div>
+
+</div>
+
+</section>
+
+                <section id="find-doctors" class="page-content">
+                    <div class="max-w-7xl mx-auto p-10">
+
+<!-- Header -->
+<h1 class="text-3xl font-bold text-gray-800 mb-2">Find Doctors</h1>
+<p class="text-gray-500 mb-8">
+Search and book appointments with top medical specialists in your area.
+</p>
+
+
+<!-- Search Section -->
+<div class="bg-white p-4 rounded-xl shadow flex gap-4 mb-10">
+
+<input type="text"
+placeholder="Doctor name, specialty, or condition..."
+class="flex-1 border rounded-lg px-4 py-3 outline-none">
+
+<input type="text"
+placeholder="Location"
+class="w-48 border rounded-lg px-4 py-3 outline-none">
+
+<input type="date"
+class="w-48 border rounded-lg px-4 py-3 outline-none">
+
+<button class="bg-blue-600 text-white px-8 rounded-lg font-semibold hover:bg-blue-700">
+Search
+</button>
+
+</div>
+
+
+<!-- Doctors Cards -->
+<div class="grid grid-cols-3 gap-8">
+
+<!-- Doctor 1 -->
+<div class="bg-white p-6 rounded-xl shadow">
+
+<div class="flex gap-4">
+
+<img src=""
+class="w-16 h-16 rounded-lg object-cover">
+
+<div>
+<h3 class="text-lg font-semibold text-gray-800">Dr.krishna Iyer</h3>
+<p class="text-blue-500 text-sm">Cardiologist</p>
+<p class="text-gray-500 text-sm">KMCT Medical College Hospital</p>
+</div>
+
+</div>
+
+<div class="flex justify-between mt-6 text-sm text-gray-600">
+
+<div>
+<p class="font-semibold">4.9</p>
+<p>(120 reviews)</p>
+</div>
+
+<div>
+<p class="font-semibold">12 Yrs</p>
+<p>Exp</p>
+</div>
+
+</div>
+
+<hr class="my-4">
+
+<p class="text-gray-400 text-xs font-semibold mb-3">NEXT AVAILABLE</p>
+
+<div class="flex gap-3 mb-4">
+
+<span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm">
+Today, 2:30 PM
+</span>
+
+<span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-lg text-sm">
+Tomorrow, 9:00 AM
+</span>
+
+</div>
+
+<button class="w-full border rounded-lg py-2 font-semibold hover:bg-gray-100">
+Book Appointment
+</button>
+
+</div>
+
+
+<!-- Doctor 2 -->
+<div class="bg-white p-6 rounded-xl shadow">
+
+<div class="flex gap-4">
+
+<img src="https://randomuser.me/api/portraits/men/32.jpg"
+class="w-16 h-16 rounded-lg object-cover">
+
+<div>
+<h3 class="text-lg font-semibold text-gray-800">Dr.Anjali Nair</h3>
+<p class="text-blue-500 text-sm">Neurologist</p>
+<p class="text-gray-500 text-sm">Westside Clinic</p>
+</div>
+
+</div>
+
+<div class="flex justify-between mt-6 text-sm text-gray-600">
+
+<div>
+<p class="font-semibold">4.7</p>
+<p>(85 reviews)</p>
+</div>
+
+<div>
+<p class="font-semibold">8 Yrs</p>
+<p>Exp</p>
+</div>
+
+</div>
+
+<hr class="my-4">
+
+<p class="text-gray-400 text-xs font-semibold mb-3">NEXT AVAILABLE</p>
+
+<div class="flex gap-3 mb-4">
+
+<span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm">
+Today, 4:00 PM
+</span>
+
+<span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-lg text-sm">
+Wed, 10:30 AM
+</span>
+
+</div>
+
+<button class="w-full border rounded-lg py-2 font-semibold hover:bg-gray-100">
+Book Appointment
+</button>
+
+</div>
+
+
+<!-- Doctor 3 -->
+<div class="bg-white p-6 rounded-xl shadow">
+
+<div class="flex gap-4">
+
+<img src="https://randomuser.me/api/portraits/women/65.jpg"
+class="w-16 h-16 rounded-lg object-cover">
+
+<div>
+<h3 class="text-lg font-semibold text-gray-800">Dr.vishal K</h3>
+<p class="text-blue-500 text-sm">Dermatologist</p>
+<p class="text-gray-500 text-sm">Skin Care Center</p>
+</div>
+
+</div>
+
+<div class="flex justify-between mt-6 text-sm text-gray-600">
+
+<div>
+<p class="font-semibold">4.8</p>
+<p>(210 reviews)</p>
+</div>
+
+<div>
+<p class="font-semibold">15 Yrs</p>
+<p>Exp</p>
+</div>
+
+</div>
+
+<hr class="my-4">
+
+<p class="text-gray-400 text-xs font-semibold mb-3">NEXT AVAILABLE</p>
+
+<div class="flex gap-3 mb-4">
+
+<span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm">
+Tomorrow, 11:00 AM
+</span>
+
+<span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-lg text-sm">
+Thu, 2:00 PM
+</span>
+
+</div>
+
+<button class="w-full border rounded-lg py-2 font-semibold hover:bg-gray-100">
+Book Appointment
+</button>
+
+</div>
+
+</div>
+
+</div>
+                </section>
+
+                <section id="hospitals" class="page-content">
+                    <div class="max-w-7xl mx-auto">
+
+<!-- Header -->
+<h1 class="text-3xl font-bold text-gray-800">Hospitals & Clinics</h1>
+<p class="text-gray-500 mt-1 mb-6">
+Find emergency care, specialized clinics, and general hospitals near you.
+</p>
+
+<!-- Search Bar -->
+<div class="flex flex-wrap gap-4 mb-10">
+
+<input type="text" placeholder="Search by hospital name or specialty..."
+class="flex-1 border rounded-lg px-4 py-3">
+
+<select class="border rounded-lg px-4 py-3">
+<option>Location: All</option>
+</select>
+
+<select class="border rounded-lg px-4 py-3">
+<option>Facility Type</option>
+</select>
+
+<button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+Search
+</button>
+
+</div>
+
+
+<!-- Cards -->
+<div class="grid md:grid-cols-3 gap-8">
+
+<!-- Card -->
+<div class="bg-white rounded-xl shadow">
+
+<img src="data:image/png;base64,REPLACE_WITH_BASE64_IMAGE"
+class="rounded-t-xl w-full h-48 object-cover">
+
+<div class="p-5">
+
+<div class="flex justify-between items-center">
+<h2 class="font-semibold text-lg">City General Hospital</h2>
+<span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-sm">4.8</span>
+</div>
+
+<p class="text-gray-500 text-sm mt-1">124 Downtown Ave, NY</p>
+
+<div class="flex flex-wrap gap-2 mt-3 text-sm">
+<span class="bg-gray-100 px-3 py-1 rounded-full">Emergency</span>
+<span class="bg-gray-100 px-3 py-1 rounded-full">Cardiology</span>
+<span class="bg-gray-100 px-3 py-1 rounded-full">Pediatrics</span>
+</div>
+
+<div class="grid grid-cols-3 text-center mt-5 text-sm text-gray-600">
+<div>
+<p class="font-semibold">2.4 mi</p>
+<p class="text-xs">Distance</p>
+</div>
+
+<div>
+<p class="font-semibold">15 mins</p>
+<p class="text-xs">Wait Time</p>
+</div>
+
+<div>
+<p class="font-semibold">Yes</p>
+<p class="text-xs">Accepts Ins.</p>
+</div>
+</div>
+
+<div class="flex gap-3 mt-6">
+<button class="border px-4 py-2 rounded-lg w-full">View Details</button>
+<button class="bg-blue-600 text-white px-4 py-2 rounded-lg w-full">Book Visit</button>
+</div>
+
+</div>
+</div>
+
+
+<!-- Card 2 -->
+<div class="bg-white rounded-xl shadow">
+
+<img src="data:image/png;base64,REPLACE_WITH_BASE64_IMAGE"
+class="rounded-t-xl w-full h-48 object-cover">
+
+<div class="p-5">
+
+<div class="flex justify-between items-center">
+<h2 class="font-semibold text-lg">Westside Medical Center</h2>
+<span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-sm">4.6</span>
+</div>
+
+<p class="text-gray-500 text-sm mt-1">890 West Blvd, NY</p>
+
+<div class="flex flex-wrap gap-2 mt-3 text-sm">
+<span class="bg-gray-100 px-3 py-1 rounded-full">Orthopedics</span>
+<span class="bg-gray-100 px-3 py-1 rounded-full">Neurology</span>
+<span class="bg-gray-100 px-3 py-1 rounded-full">Radiology</span>
+</div>
+
+<div class="grid grid-cols-3 text-center mt-5 text-sm text-gray-600">
+<div>
+<p class="font-semibold">4.1 mi</p>
+<p class="text-xs">Distance</p>
+</div>
+
+<div>
+<p class="font-semibold">30 mins</p>
+<p class="text-xs">Wait Time</p>
+</div>
+
+<div>
+<p class="font-semibold">Yes</p>
+<p class="text-xs">Accepts Ins.</p>
+</div>
+</div>
+
+<div class="flex gap-3 mt-6">
+<button class="border px-4 py-2 rounded-lg w-full">View Details</button>
+<button class="bg-blue-600 text-white px-4 py-2 rounded-lg w-full">Book Visit</button>
+</div>
+
+</div>
+</div>
+
+
+<!-- Card 3 -->
+<div class="bg-white rounded-xl shadow">
+
+<img src="data:image/png;base64,REPLACE_WITH_BASE64_IMAGE"
+class="rounded-t-xl w-full h-48 object-cover">
+
+<div class="p-5">
+
+<div class="flex justify-between items-center">
+<h2 class="font-semibold text-lg">Sunrise Children's Clinic</h2>
+<span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-sm">4.9</span>
+</div>
+
+<p class="text-gray-500 text-sm mt-1">450 Spring St, NY</p>
+
+<div class="flex flex-wrap gap-2 mt-3 text-sm">
+<span class="bg-gray-100 px-3 py-1 rounded-full">Pediatrics</span>
+<span class="bg-gray-100 px-3 py-1 rounded-full">Vaccinations</span>
+<span class="bg-gray-100 px-3 py-1 rounded-full">Dental</span>
+</div>
+
+<div class="grid grid-cols-3 text-center mt-5 text-sm text-gray-600">
+<div>
+<p class="font-semibold">5.5 mi</p>
+<p class="text-xs">Distance</p>
+</div>
+
+<div>
+<p class="font-semibold">5 mins</p>
+<p class="text-xs">Wait Time</p>
+</div>
+
+<div>
+<p class="font-semibold">Yes</p>
+<p class="text-xs">Accepts Ins.</p>
+</div>
+</div>
+
+<div class="flex gap-3 mt-6">
+<button class="border px-4 py-2 rounded-lg w-full">View Details</button>
+<button class="bg-blue-600 text-white px-4 py-2 rounded-lg w-full">Book Visit</button>
+</div>
+
+</div>
+</div>
+
+</div>
+
+</div>
+                    
+                </section>
+
+                <section id="blood-banks" class="page-content">
+                    <div class="flex justify-between items-end mb-8">
+                        <div class="max-w-7xl mx-auto p-8">
+
+<!-- Header -->
+<div class="flex justify-between items-start mb-6">
+
+<div>
+<h1 class="text-3xl font-bold text-gray-800">Blood Banks & Donation</h1>
+<p class="text-gray-500 mt-1">
+Find blood banks, request blood, or register as a donor.
+</p>
+</div>
+
+<div class="flex gap-3">
+<button class="bg-blue-100 text-blue-800 px-5 py-2 rounded-lg font-medium">
+Register as Donor
+</button>
+
+<button class="bg-red-500 text-white px-5 py-2 rounded-lg font-medium">
+Request Blood
+</button>
+</div>
+
+</div>
+
+
+<!-- Filter Section -->
+<div class="bg-white rounded-xl shadow p-5 mb-8 grid md:grid-cols-3 gap-6">
+
+<div>
+<label class="text-sm font-semibold text-gray-600">LOCATION</label>
+<input class="w-full border mt-2 p-3 rounded-lg"
+value="Current Location (5km)">
+</div>
+
+<div>
+<label class="text-sm font-semibold text-gray-600">BLOOD GROUP NEEDED</label>
+<input class="w-full border mt-2 p-3 rounded-lg"
+value="O+ (Positive)">
+</div>
+
+<div>
+<label class="text-sm font-semibold text-gray-600">SORT BY</label>
+<input class="w-full border mt-2 p-3 rounded-lg"
+value="Nearest First">
+</div>
+
+</div>
+
+
+<div class="grid lg:grid-cols-3 gap-6">
+
+<!-- LEFT COLUMN -->
+<div class="lg:col-span-2 space-y-6">
+
+
+<!-- Blood Bank Card -->
+<div class="bg-white p-6 rounded-xl shadow">
+
+<div class="flex justify-between items-center">
+<h2 class="text-lg font-semibold text-gray-800">
+City Central Blood Bank
+</h2>
+
+<span class="bg-green-100 text-green-700 text-sm px-3 py-1 rounded">
+Open 24/7
+</span>
+</div>
+
+<p class="text-gray-500 mt-1 text-sm">
+1.2 km away • 123 Main St
+</p>
+
+<p class="text-sm font-semibold text-gray-600 mt-4">
+INVENTORY STATUS
+</p>
+
+<div class="flex gap-2 mt-2">
+<span class="border px-3 py-1 rounded text-red-500">A+</span>
+<span class="border px-3 py-1 rounded text-red-500">O+</span>
+<span class="border px-3 py-1 rounded text-red-500">B+</span>
+<span class="border px-3 py-1 rounded text-gray-400">AB-</span>
+<span class="border px-3 py-1 rounded text-gray-400">O-</span>
+</div>
+
+<div class="flex gap-4 mt-5">
+<button class="bg-red-100 text-red-500 px-5 py-2 rounded-lg w-full">
+Request
+</button>
+
+<button class="bg-blue-100 text-blue-700 px-5 py-2 rounded-lg w-full">
+Contact
+</button>
+</div>
+
+</div>
+
+
+<!-- Blood Bank Card -->
+<div class="bg-white p-6 rounded-xl shadow">
+
+<div class="flex justify-between items-center">
+<h2 class="text-lg font-semibold text-gray-800">
+Red Cross Memorial Center
+</h2>
+
+<span class="bg-green-100 text-green-700 text-sm px-3 py-1 rounded">
+Open 24/7
+</span>
+</div>
+
+<p class="text-gray-500 mt-1 text-sm">
+3.5 km away • Westside Ave
+</p>
+
+<p class="text-sm font-semibold text-gray-600 mt-4">
+INVENTORY STATUS
+</p>
+
+<div class="flex gap-2 mt-2">
+<span class="border px-3 py-1 rounded text-gray-500">A+</span>
+<span class="border px-3 py-1 rounded text-red-500">O+</span>
+<span class="border px-3 py-1 rounded text-gray-500">B+</span>
+<span class="border px-3 py-1 rounded text-red-500">AB+</span>
+</div>
+
+<div class="flex gap-4 mt-5">
+<button class="bg-red-100 text-red-500 px-5 py-2 rounded-lg w-full">
+Request
+</button>
+
+<button class="bg-blue-100 text-blue-700 px-5 py-2 rounded-lg w-full">
+Contact
+</button>
+</div>
+
+</div>
+
+
+<!-- Blood Bank Card -->
+<div class="bg-white p-6 rounded-xl shadow">
+
+<div class="flex justify-between items-center">
+<h2 class="text-lg font-semibold text-gray-800">
+Hope Blood Donation Center
+</h2>
+
+<span class="bg-gray-200 text-gray-700 text-sm px-3 py-1 rounded">
+Closes at 8 PM
+</span>
+</div>
+
+<p class="text-gray-500 mt-1 text-sm">
+5.0 km away • North Park Rd
+</p>
+
+<p class="text-sm font-semibold text-gray-600 mt-4">
+INVENTORY STATUS
+</p>
+
+<div class="flex gap-2 mt-2">
+<span class="border px-3 py-1 rounded text-red-500">A+</span>
+<span class="border px-3 py-1 rounded text-red-500">A-</span>
+<span class="border px-3 py-1 rounded text-red-500">O+</span>
+<span class="border px-3 py-1 rounded text-red-500">O-</span>
+</div>
+
+<div class="flex gap-4 mt-5">
+<button class="bg-red-100 text-red-500 px-5 py-2 rounded-lg w-full">
+Request
+</button>
+
+<button class="bg-blue-100 text-blue-700 px-5 py-2 rounded-lg w-full">
+Contact
+</button>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- RIGHT COLUMN -->
+<div class="bg-red-50 border border-red-200 rounded-xl p-6">
+
+<h2 class="text-lg font-semibold text-red-600 mb-5">
+Emergency Blood Requests
+</h2>
+
+
+<!-- Emergency Card -->
+<div class="bg-white p-5 rounded-lg shadow mb-5">
+
+<div class="flex justify-between items-center mb-2">
+
+<span class="bg-red-500 text-white px-3 py-1 rounded font-semibold">
+O-
+</span>
+
+<span class="bg-red-100 text-red-600 px-3 py-1 text-sm rounded">
+URGENT
+</span>
+
+</div>
+
+<h3 class="font-semibold text-gray-800">
+City General Hospital
+</h3>
+
+<p class="text-gray-500 text-sm mt-1">
+Needed for surgery in 2 hours
+</p>
+
+<p class="text-gray-500 text-sm mb-3">
+2 units required
+</p>
+
+<button class="w-full bg-red-500 text-white py-2 rounded-lg">
+Donate Now
+</button>
+
+</div>
+
+
+<!-- Emergency Card -->
+<div class="bg-white p-5 rounded-lg shadow">
+
+<div class="flex justify-between items-center mb-2">
+
+<span class="bg-red-500 text-white px-3 py-1 rounded font-semibold">
+AB-
+</span>
+
+<span class="bg-yellow-400 text-white px-3 py-1 text-sm rounded">
+HIGH
+</span>
+
+</div>
+
+<h3 class="font-semibold text-gray-800">
+Westside Emergency Center
+</h3>
+
+<p class="text-gray-500 text-sm mt-1">
+Accident victim
+</p>
+
+<p class="text-gray-500 text-sm mb-3">
+1 unit required
+</p>
+
+<button class="w-full bg-yellow-500 text-white py-2 rounded-lg">
+Donate Now
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+                        
+                </section>
+
+                <section id="ai-analyzer" class="page-content">
+                    <div class="max-w-7xl mx-auto p-8">
+
+<!-- HEADER -->
+<div class="flex justify-between items-start mb-6">
+
+<div>
+<h1 class="text-3xl font-bold text-gray-800">AI Report Analyzer</h1>
+
+<p class="text-gray-500 mt-1">
+Upload your medical or blood reports for instant AI-powered analysis and disease prediction.
+</p>
+</div>
+
+<button class="bg-blue-100 text-blue-700 px-5 py-2 rounded-lg font-medium">
+View Full History
+</button>
+
+</div>
+
+
+<!-- MAIN GRID -->
+<div class="grid lg:grid-cols-2 gap-6">
+
+<!-- LEFT PANEL -->
+<div class="bg-white rounded-xl shadow p-6">
+
+<h2 class="text-lg font-semibold text-gray-800 mb-4">
+Upload Report
+</h2>
+
+<!-- DROP AREA -->
+<div class="border-2 border-dashed border-gray-300 rounded-xl p-10 text-center">
+
+<div class="flex justify-center mb-4">
+<div class="w-16 h-16 bg-blue-500 rounded-full"></div>
+</div>
+
+<h3 class="text-gray-700 font-medium">
+Drag & drop your files here
+</h3>
+
+<p class="text-gray-500 text-sm mt-2">
+Upload medical test results, blood work, or imaging reports for AI analysis.
+</p>
+
+<div class="flex justify-center gap-2 mt-5 text-sm">
+<span class="bg-gray-200 px-3 py-1 rounded">PDF</span>
+<span class="bg-gray-200 px-3 py-1 rounded">JPG</span>
+<span class="bg-gray-200 px-3 py-1 rounded">PNG</span>
+<span class="bg-gray-200 px-3 py-1 rounded">Max 25MB</span>
+</div>
+
+<button class="mt-6 bg-blue-600 text-white px-6 py-2 rounded-lg">
+Browse Files
+</button>
+
+</div>
+
+
+<!-- PROCESS STEPS -->
+<div class="grid grid-cols-3 text-center mt-10 gap-4">
+
+<div>
+<div class="w-12 h-12 bg-gray-200 rounded-lg mx-auto mb-2"></div>
+<h4 class="font-semibold text-gray-700">1. Upload</h4>
+<p class="text-sm text-gray-500">
+Securely upload your lab or medical reports.
+</p>
+</div>
+
+<div>
+<div class="w-12 h-12 bg-gray-200 rounded-lg mx-auto mb-2"></div>
+<h4 class="font-semibold text-gray-700">2. AI Processing</h4>
+<p class="text-sm text-gray-500">
+Our clinical AI extracts data and cross-references metrics.
+</p>
+</div>
+
+<div>
+<div class="w-12 h-12 bg-gray-200 rounded-lg mx-auto mb-2"></div>
+<h4 class="font-semibold text-gray-700">3. Results</h4>
+<p class="text-sm text-gray-500">
+Get plain-English summaries and predictions.
+</p>
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- RIGHT PANEL -->
+<div class="bg-white rounded-xl shadow p-6">
+
+<h2 class="text-lg font-semibold text-gray-800 mb-4">
+Recent Analyses
+</h2>
+
+
+<!-- CARD 1 -->
+<div class="border rounded-lg p-4 mb-4">
+
+<div class="flex justify-between items-center">
+
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-gray-200 rounded"></div>
+
+<div>
+<p class="font-semibold text-gray-800">
+Complete_Blood_Count.pdf
+</p>
+<p class="text-sm text-gray-500">Today, 10:45 AM</p>
+</div>
+</div>
+
+<span class="bg-green-100 text-green-700 px-3 py-1 text-xs rounded">
+ANALYZED
+</span>
+
+</div>
+
+<div class="bg-blue-50 p-4 rounded mt-4 text-sm text-gray-700">
+
+<p class="font-semibold text-gray-500 mb-1">AI SUMMARY</p>
+
+Hemoglobin levels are slightly below normal range (11.2 g/dL). 
+Prediction indicates <span class="text-red-500 font-semibold">Mild Iron-Deficiency Anemia</span>. 
+Recommend dietary changes or iron supplements.
+
+</div>
+
+<a href="#" class="text-blue-600 text-sm mt-2 inline-block">
+View Full Report
+</a>
+
+</div>
+
+
+<!-- CARD 2 -->
+<div class="border rounded-lg p-4 mb-4">
+
+<div class="flex justify-between items-center">
+
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-green-100 rounded"></div>
+
+<div>
+<p class="font-semibold text-gray-800">
+chest_xray_scan.jpg
+</p>
+<p class="text-sm text-gray-500">Yesterday, 2:15 PM</p>
+</div>
+</div>
+
+<span class="bg-green-100 text-green-700 px-3 py-1 text-xs rounded">
+ANALYZED
+</span>
+
+</div>
+
+<div class="bg-blue-50 p-4 rounded mt-4 text-sm text-gray-700">
+
+<p class="font-semibold text-gray-500 mb-1">AI SUMMARY</p>
+
+Lungs appear clear with no significant opacities. 
+Heart size is within normal limits. 
+<span class="text-green-600 font-semibold">No anomalies detected.</span>
+
+</div>
+
+</div>
+
+
+
+<!-- CARD 3 -->
+<div class="border rounded-lg p-4">
+
+<div class="flex justify-between items-center">
+
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-gray-200 rounded"></div>
+
+<div>
+<p class="font-semibold text-gray-800">
+Thyroid_Panel_Results.pdf
+</p>
+<p class="text-sm text-gray-500">Just now</p>
+</div>
+</div>
+
+<span class="bg-yellow-100 text-yellow-700 px-3 py-1 text-xs rounded">
+PROCESSING
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+                </section>
+
+                <section id="profile" class="page-content">
+
+<!-- PROFILE HEADER -->
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+
+<div class="flex items-center justify-between flex-wrap gap-4">
+
+<div class="flex items-center gap-5">
+
+<img src="https://randomuser.me/api/portraits/men/32.jpg"
+class="w-20 h-20 rounded-full object-cover">
+
+<div>
+
+<h1 class="text-3xl font-bold text-gray-800">
+Alex Morgan
+</h1>
+
+<div class="flex gap-3 mt-2 flex-wrap">
+
+<span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">
+Patient ID: #PT-84729
+</span>
+
+<span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">
+Seattle, WA
+</span>
+
+<span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm">
+Verified Profile
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+<a href="#" class="text-blue-600 font-medium">
+Edit Profile
+</a>
+
+</div>
+
+
+
+<!-- HEALTH STATS -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+
+<div class="bg-gray-50 p-4 rounded-lg border">
+<p class="text-gray-500 text-sm">Blood Group</p>
+<p class="text-xl font-semibold">O+</p>
+</div>
+
+<div class="bg-gray-50 p-4 rounded-lg border">
+<p class="text-gray-500 text-sm">Age</p>
+<p class="text-xl font-semibold">32 Years</p>
+</div>
+
+<div class="bg-gray-50 p-4 rounded-lg border">
+<p class="text-gray-500 text-sm">Height</p>
+<p class="text-xl font-semibold">180 cm</p>
+</div>
+
+<div class="bg-gray-50 p-4 rounded-lg border">
+<p class="text-gray-500 text-sm">Weight</p>
+<p class="text-xl font-semibold">75 kg</p>
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- MAIN CONTENT -->
+<div class="grid md:grid-cols-3 gap-6">
+
+<!-- MEDICAL INFORMATION -->
+<div class="md:col-span-2 bg-white rounded-xl shadow p-6">
+
+<div class="flex justify-between items-center mb-6">
+
+<h2 class="text-xl font-semibold text-gray-800">
+Medical Information
+</h2>
+
+<a href="#" class="text-blue-600 text-sm">
+Update Details
+</a>
+
+</div>
+
+
+<!-- ITEM -->
+<div class="pb-4 border-b">
+
+<h3 class="font-semibold text-gray-700 mb-1">
+Allergies
+</h3>
+
+<p class="text-gray-600 text-sm">
+Penicillin, Peanuts. Mild reaction to dust mites.
+</p>
+
+</div>
+
+
+<!-- ITEM -->
+<div class="py-4 border-b">
+
+<h3 class="font-semibold text-gray-700 mb-1">
+Chronic Conditions
+</h3>
+
+<p class="text-gray-600 text-sm">
+Mild Asthma (diagnosed 2018), managed with occasional inhaler use.
+</p>
+
+</div>
+
+
+<!-- ITEM -->
+<div class="py-4 border-b">
+
+<h3 class="font-semibold text-gray-700 mb-1">
+Current Medications
+</h3>
+
+<p class="text-gray-600 text-sm">
+Albuterol Sulfate Inhalation Aerosol (as needed), Vitamin D3 (1000 IU daily).
+</p>
+
+</div>
+
+
+<!-- ITEM -->
+<div class="pt-4">
+
+<h3 class="font-semibold text-gray-700 mb-1">
+Emergency Contact
+</h3>
+
+<p class="text-gray-600 text-sm">
+Sarah Morgan (Wife) <br>
+Phone: +1 (555) 234-5678
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- RECENT ACTIVITY -->
+<div class="bg-white rounded-xl shadow p-6">
+
+<h2 class="text-xl font-semibold text-gray-800 mb-6">
+Recent Activity
+</h2>
+
+<div class="space-y-6 relative border-l-2 border-gray-200 pl-6">
+
+<div>
+<div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2"></div>
+<p class="font-medium text-gray-700">
+Analyzed Blood Work Report
+</p>
+<p class="text-sm text-gray-500">
+Today, 09:41 AM
+</p>
+</div>
+
+<div>
+<div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2"></div>
+<p class="font-medium text-gray-700">
+Booked Appointment with Dr. Jenkins
+</p>
+<p class="text-sm text-gray-500">
+Oct 20, 14:30 PM
+</p>
+</div>
+
+<div>
+<div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2"></div>
+<p class="font-medium text-gray-700">
+Searched for nearby Cardiologists
+</p>
+<p class="text-sm text-gray-500">
+Oct 18, 11:15 AM
+</p>
+</div>
+
+<div>
+<div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2"></div>
+<p class="font-medium text-gray-700">
+Updated Medical Profile
+</p>
+<p class="text-sm text-gray-500">
+Sep 22, 16:00 PM
+</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+                    
+                </section>
+
+                <section id="appointments" class="page-content">
+
+<!-- HEADER -->
+<div class="flex justify-between items-center mb-8">
+<h1 class="text-3xl font-bold text-gray-800">Appointments</h1>
+
+<button class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700">
+Book New Appointment
+</button>
+</div>
+
+
+
+<!-- CURRENT APPOINTMENTS -->
+<h2 class="text-lg font-semibold text-gray-700 mb-4">
+Current & Upcoming
+</h2>
+
+
+<!-- CARD -->
+<div class="bg-white rounded-xl shadow p-6 mb-4 flex items-center justify-between">
+
+<div class="flex items-center gap-4">
+
+<img src="https://randomuser.me/api/portraits/women/44.jpg"
+class="w-14 h-14 rounded-full object-cover">
+
+<div>
+<h3 class="font-semibold text-gray-800">Dr. Sarah Jenkins</h3>
+<p class="text-gray-500 text-sm">Cardiologist • City General Hospital</p>
+
+<span class="text-blue-600 text-xs bg-blue-100 px-3 py-1 rounded-full">
+Upcoming
+</span>
+</div>
+
+</div>
+
+<div class="text-sm text-gray-600">
+Oct 24, 2023<br>
+Room 402, Main Building
+</div>
+
+<div class="text-sm text-gray-600">
+10:00<br>
+AM
+</div>
+
+<div class="flex gap-3">
+<button class="border px-4 py-2 rounded-lg text-gray-700">
+Reschedule
+</button>
+
+<button class="border border-red-400 text-red-500 px-4 py-2 rounded-lg">
+Cancel
+</button>
+</div>
+
+</div>
+
+
+
+<!-- CARD -->
+<div class="bg-white rounded-xl shadow p-6 mb-8 flex items-center justify-between">
+
+<div class="flex items-center gap-4">
+
+<img src="https://randomuser.me/api/portraits/men/32.jpg"
+class="w-14 h-14 rounded-full object-cover">
+
+<div>
+<h3 class="font-semibold text-gray-800">Dr. Michael Chen</h3>
+<p class="text-gray-500 text-sm">General Practice • Westside Clinic</p>
+
+<span class="text-blue-600 text-xs bg-blue-100 px-3 py-1 rounded-full">
+Upcoming
+</span>
+</div>
+
+</div>
+
+<div class="text-sm text-gray-600">
+Oct 28, 2023<br>
+Online Consultation
+</div>
+
+<div class="text-sm text-gray-600">
+02:30<br>
+PM
+</div>
+
+<div class="flex gap-3">
+<button class="border px-4 py-2 rounded-lg text-gray-700">
+Reschedule
+</button>
+
+<button class="border border-red-400 text-red-500 px-4 py-2 rounded-lg">
+Cancel
+</button>
+</div>
+
+</div>
+
+
+
+
+<!-- PREVIOUS APPOINTMENTS -->
+<h2 class="text-lg font-semibold text-gray-700 mb-4">
+Previous Appointments
+</h2>
+
+
+<!-- CARD -->
+<div class="bg-white rounded-xl shadow p-6 mb-4 flex items-center justify-between">
+
+<div class="flex items-center gap-4">
+
+<img src="https://randomuser.me/api/portraits/women/68.jpg"
+class="w-14 h-14 rounded-full object-cover">
+
+<div>
+<h3 class="font-semibold text-gray-800">Dr. Emily Parker</h3>
+<p class="text-gray-500 text-sm">Dermatologist • Skin Care Clinic</p>
+
+<span class="text-green-600 text-xs bg-green-100 px-3 py-1 rounded-full">
+Completed
+</span>
+</div>
+
+</div>
+
+<div class="text-sm text-gray-600">
+Sep 15, 2023
+</div>
+
+<div class="text-sm text-gray-600">
+11:00<br>
+AM
+</div>
+
+<div class="flex gap-3">
+<button class="border px-4 py-2 rounded-lg text-gray-700">
+View Summary
+</button>
+
+<button class="border px-4 py-2 rounded-lg text-gray-700">
+Book Again
+</button>
+</div>
+
+</div>
+
+
+
+<!-- CARD -->
+<div class="bg-white rounded-xl shadow p-6 flex items-center justify-between">
+
+<div class="flex items-center gap-4">
+
+<img src="https://randomuser.me/api/portraits/men/52.jpg"
+class="w-14 h-14 rounded-full object-cover">
+
+<div>
+<h3 class="font-semibold text-gray-800">Dr. Robert Wilson</h3>
+<p class="text-gray-500 text-sm">Neurologist • City General Hospital</p>
+
+<span class="text-green-600 text-xs bg-green-100 px-3 py-1 rounded-full">
+Completed
+</span>
+</div>
+
+</div>
+
+<div class="text-sm text-gray-600">
+Aug 02, 2023
+</div>
+
+<div class="text-sm text-gray-600">
+09:15<br>
+AM
+</div>
+
+<div class="flex gap-3">
+<button class="border px-4 py-2 rounded-lg text-gray-700">
+View Summary
+</button>
+
+<button class="border px-4 py-2 rounded-lg text-gray-700">
+Book Again
+</button>
+</div>
+
+</div>
+
+
+</div>
+                </section>
+
+                <section id="settings" class="page-content">
+                    <div class="max-w-7xl mx-auto p-8">
+
+<!-- HEADER -->
+<div class="mb-6">
+<h1 class="text-3xl font-bold text-gray-800">Settings</h1>
+<p class="text-gray-500">Manage your app preferences and account settings.</p>
+</div>
+
+<div class="grid grid-cols-4 gap-8">
+
+<!-- SIDEBAR -->
+<div class="col-span-1">
+
+<div class="space-y-2">
+
+<button class="w-full text-left bg-blue-100 text-blue-700 px-4 py-2 rounded-lg">
+General Preferences
+</button>
+
+<button class="w-full text-left px-4 py-2 text-gray-600 hover:bg-gray-200 rounded-lg">
+Account Details
+</button>
+
+<button class="w-full text-left px-4 py-2 text-gray-600 hover:bg-gray-200 rounded-lg">
+Notifications
+</button>
+
+<button class="w-full text-left px-4 py-2 text-gray-600 hover:bg-gray-200 rounded-lg">
+Privacy & Security
+</button>
+
+<button class="w-full text-left px-4 py-2 text-gray-600 hover:bg-gray-200 rounded-lg">
+Help & Support
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- MAIN SETTINGS -->
+<div class="col-span-3 space-y-8">
+
+
+<!-- REGIONAL SETTINGS -->
+<div>
+
+<h2 class="text-lg font-semibold text-gray-800">
+Regional & Language
+</h2>
+
+<p class="text-sm text-gray-500 mb-4">
+Customize the language and region for accurate hospital and doctor recommendations.
+</p>
+
+
+<label class="text-sm text-gray-600">Language</label>
+<input class="w-full border p-3 rounded-lg mb-4"
+value="English (United States)">
+
+<div class="grid grid-cols-2 gap-4">
+
+<div>
+<label class="text-sm text-gray-600">Country</label>
+<input class="w-full border p-3 rounded-lg"
+value="United States">
+</div>
+
+<div>
+<label class="text-sm text-gray-600">Region / State</label>
+<input class="w-full border p-3 rounded-lg"
+value="California">
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- APPEARANCE -->
+<div>
+
+<h2 class="text-lg font-semibold text-gray-800">
+Appearance
+</h2>
+
+<p class="text-sm text-gray-500 mb-4">
+Choose how the app looks on your device.
+</p>
+
+<div class="flex gap-4">
+
+<div class="border-2 border-blue-500 p-4 rounded-lg w-40 text-center cursor-pointer">
+<div class="bg-gray-200 h-16 rounded mb-2"></div>
+<p class="text-sm font-medium">Light</p>
+</div>
+
+<div class="border p-4 rounded-lg w-40 text-center cursor-pointer">
+<div class="bg-gray-800 h-16 rounded mb-2"></div>
+<p class="text-sm font-medium">Dark</p>
+</div>
+
+<div class="border p-4 rounded-lg w-40 text-center cursor-pointer">
+<div class="flex h-16 rounded mb-2 overflow-hidden">
+<div class="w-1/2 bg-gray-200"></div>
+<div class="w-1/2 bg-gray-800"></div>
+</div>
+<p class="text-sm font-medium">System</p>
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- APP SETTINGS -->
+<div>
+
+<h2 class="text-lg font-semibold text-gray-800">
+App Settings
+</h2>
+
+<p class="text-sm text-gray-500 mb-4">
+Manage general application features and behavior.
+</p>
+
+
+<!-- TOGGLE ITEM -->
+<div class="bg-white p-4 rounded-lg shadow flex justify-between items-center mb-4">
+
+<div>
+<h3 class="font-medium text-gray-800">Location Services</h3>
+<p class="text-sm text-gray-500">
+Allow Care Link to use your location to find nearby hospitals and blood banks.
+</p>
+</div>
+
+<label class="inline-flex items-center cursor-pointer">
+<input type="checkbox" class="sr-only peer" checked>
+<div class="w-11 h-6 bg-gray-300 rounded-full peer peer-checked:bg-blue-600 relative after:content-[''] after:absolute after:w-5 after:h-5 after:bg-white after:rounded-full after:left-0.5 after:top-0.5 peer-checked:after:translate-x-5"></div>
+</label>
+
+</div>
+
+
+
+<!-- TOGGLE ITEM -->
+<div class="bg-white p-4 rounded-lg shadow flex justify-between items-center mb-4">
+
+<div>
+<h3 class="font-medium text-gray-800">Sync Calendar</h3>
+<p class="text-sm text-gray-500">
+Automatically add booked appointments to your device calendar.
+</p>
+</div>
+
+<label class="inline-flex items-center cursor-pointer">
+<input type="checkbox" class="sr-only peer" checked>
+<div class="w-11 h-6 bg-gray-300 rounded-full peer peer-checked:bg-blue-600 relative after:content-[''] after:absolute after:w-5 after:h-5 after:bg-white after:rounded-full after:left-0.5 after:top-0.5 peer-checked:after:translate-x-5"></div>
+</label>
+
+</div>
+
+
+
+<!-- TOGGLE ITEM -->
+<div class="bg-white p-4 rounded-lg shadow flex justify-between items-center">
+
+<div>
+<h3 class="font-medium text-gray-800">Analytics & Improvements</h3>
+<p class="text-sm text-gray-500">
+Share anonymous usage data to help us improve the app.
+</p>
+</div>
+
+<label class="inline-flex items-center cursor-pointer">
+<input type="checkbox" class="sr-only peer">
+<div class="w-11 h-6 bg-gray-300 rounded-full peer peer-checked:bg-blue-600 relative after:content-[''] after:absolute after:w-5 after:h-5 after:bg-white after:rounded-full after:left-0.5 after:top-0.5 peer-checked:after:translate-x-5"></div>
+</label>
+
+</div>
+
+</div>
+
+
+
+<!-- ACTION BUTTONS -->
+<div class="flex justify-end gap-4 pt-4">
+
+<button class="px-5 py-2 bg-gray-200 rounded-lg">
+Cancel
+</button>
+
+<button class="px-5 py-2 bg-blue-600 text-white rounded-lg">
+Save Changes
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+                </section>
+
+                <section id="notifications" class="page-content">
+                    <div class="max-w-3xl mx-auto p-8">
+
+<!-- HEADER -->
+<div class="flex justify-between items-center mb-6">
+
+<h1 class="text-2xl font-bold text-gray-800">
+Notifications
+</h1>
+
+<a href="#" class="text-blue-600 text-sm">
+Mark all as read
+</a>
+
+</div>
+
+
+
+<!-- TABS -->
+<div class="flex gap-4 border-b pb-3 mb-6 text-sm">
+
+<button class="bg-blue-100 text-blue-700 px-4 py-1 rounded">
+All
+</button>
+
+<button class="text-gray-500 hover:text-gray-700">
+Unread (2)
+</button>
+
+<button class="text-gray-500 hover:text-gray-700">
+Appointments
+</button>
+
+<button class="text-gray-500 hover:text-gray-700">
+Reports
+</button>
+
+</div>
+
+
+
+<!-- TODAY -->
+<h2 class="text-xs font-semibold text-gray-400 mb-3">
+TODAY
+</h2>
+
+
+<!-- CARD -->
+<div class="bg-blue-50 p-4 rounded-lg flex gap-4 mb-4">
+
+<div class="w-10 h-10 bg-blue-200 rounded-full"></div>
+
+<div>
+<h3 class="font-semibold text-gray-800">
+Appointment Confirmed
+</h3>
+
+<p class="text-gray-600 text-sm">
+Your appointment with Dr. Sarah Jenkins (Cardiologist) has been confirmed for Oct 24 at 10:00 AM.
+</p>
+
+<p class="text-xs text-gray-400 mt-1">
+2 hours ago
+</p>
+</div>
+
+</div>
+
+
+
+<!-- CARD -->
+<div class="bg-blue-50 p-4 rounded-lg flex gap-4 mb-6">
+
+<div class="w-10 h-10 bg-blue-200 rounded-full"></div>
+
+<div>
+<h3 class="font-semibold text-gray-800">
+AI Report Analysis Ready
+</h3>
+
+<p class="text-gray-600 text-sm">
+The analysis for your uploaded "Blood Work Results.pdf" is complete. All metrics appear normal.
+</p>
+
+<p class="text-xs text-gray-400 mt-1">
+4 hours ago
+</p>
+</div>
+
+</div>
+
+
+
+<!-- YESTERDAY -->
+<h2 class="text-xs font-semibold text-gray-400 mb-3">
+YESTERDAY
+</h2>
+
+
+<!-- CARD -->
+<div class="bg-white p-4 rounded-lg flex gap-4 mb-4 border">
+
+<div class="w-10 h-10 bg-red-100 rounded-full"></div>
+
+<div>
+<h3 class="font-semibold text-gray-800">
+Appointment Cancelled
+</h3>
+
+<p class="text-gray-600 text-sm">
+Your consultation with Dr. Emily Clark has been cancelled due to scheduling conflicts. Please reschedule.
+</p>
+
+<p class="text-xs text-gray-400 mt-1">
+Yesterday, 2:15 PM
+</p>
+</div>
+
+</div>
+
+
+
+<!-- CARD -->
+<div class="bg-white p-4 rounded-lg flex gap-4 mb-6 border">
+
+<div class="w-10 h-10 bg-yellow-100 rounded-full"></div>
+
+<div>
+<h3 class="font-semibold text-gray-800">
+Upcoming Appointment Reminder
+</h3>
+
+<p class="text-gray-600 text-sm">
+Reminder: You have an upcoming appointment with Dr. Michael Chen tomorrow at 2:30 PM.
+</p>
+
+<p class="text-xs text-gray-400 mt-1">
+Yesterday, 9:00 AM
+</p>
+</div>
+
+</div>
+
+
+
+<!-- OLDER -->
+<h2 class="text-xs font-semibold text-gray-400 mb-3">
+OLDER
+</h2>
+
+
+<!-- CARD -->
+<div class="bg-white p-4 rounded-lg flex gap-4 border">
+
+<div class="w-10 h-10 bg-gray-200 rounded-full"></div>
+
+<div>
+<h3 class="font-semibold text-gray-800">
+Blood Donation Drive
+</h3>
+
+<p class="text-gray-600 text-sm">
+City General Hospital is hosting a blood donation drive this weekend. Your blood type (O+) is in high demand!
+</p>
+
+<p class="text-xs text-gray-400 mt-1">
+Oct 15, 2023
+</p>
+</div>
+
+</div>
+
+
+</div>
+
+            
+                </section>
+            </div>
+        </main>
+    </div>
+
+</body>
+<footer>
+    <div class="text-center border-t pt-8">
+        <h2 class="text-blue-600 font-bold text-lg mb-4">CARE LINK</h2>
+        <div class="flex justify-center gap-8 text-gray-500 text-sm mb-6">
+            <a>About Us</a>
+            <a>Privacy Policy</a>
+            <a>Terms of Service</a>
+            <a>Help Center</a>
+        </div>
+
+    <p class="text-gray-400 text-xs">
+        © 2024 CareLink Inc. All rights reserved. Connecting healthcare, saving lives.
+    </p>
+</footer>
+</html>
